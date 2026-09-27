@@ -295,12 +295,16 @@ speed_t IO_TransRS422GetBaudRateMacro(int32 bps)
         case 230400:
             baudRate = B230400;
             break;
+#ifdef B460800 /* not in the macOS termios */
         case 460800:
             baudRate = B460800;
             break;
+#endif
+#ifdef B921600
         case 921600:
             baudRate = B921600;
             break;
+#endif
         default:
             return -1;
     }
